@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug PICO2",
+            "cwd": "${workspaceFolder}/${relativeFileDirname}",
+            "executable": "main.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "gdbPath": "/home/obijuan/.pico-sdk/toolchain/RISCV_RPI_2_0_0_5/bin/riscv32-unknown-elf-gdb",
+            "device": "rp2350",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2350-riscv.cfg"
+            ],
+            "svdFile": "${userHome}/.pico-sdk/sdk/2.1.1/src/rp2350/hardware_regs/RP2350.svd",
+            "runToEntryPoint": "_start",
+            "overrideLaunchCommands": [
+                "monitor reset init",
+                "load main.elf"
+            ],
+            "openOCDLaunchCommands": [
+                "adapter speed 5000"
+            ]
+        },	
+    ]
+}

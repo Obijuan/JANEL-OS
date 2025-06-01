@@ -13,6 +13,7 @@
 
 #-- Tabla de punteros a los diferentes contextos
 #-- de las tareas
+.align 2
 ctx_list:
     .word ctx1
     .word ctx2
@@ -272,6 +273,13 @@ FUNC_START4
     la t0, ctx_list
     la t1, ctx
     sw t0, 0(t1)  #-- ctx --> ctx_list[0]
+
+    #--- Obtener el puntero al contexto actual
+    la t0, ctx
+    lw t0, 0(t0)
+    lw t0, 0(t0)  #-- t0: Puntero al contexto actual
+
+
 
     #-- Configurar el comparador
     li t0, MTIMECMPH  #-- Direccion del comparador alto

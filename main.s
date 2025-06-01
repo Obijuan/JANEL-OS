@@ -30,8 +30,8 @@ main:
     LED_INIT(2)
     
     #-- Estados iniciales de los LEDs
-    jal led_on
-    LED_ON(2)
+    jal led_off
+    LED_OFF(2)
 
     CLS
 
