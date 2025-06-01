@@ -1,0 +1,65 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run QEMU",
+            "type": "shell",
+            "command": "echo 'QEMU started'; qemu-riscv32 -g 3333 -d page ${workspaceFolder}/${relativeFileDirname}/main.elf",
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "pattern": [
+                        {
+                            "regexp": ".",
+                            "file": 1,
+                            "location": 2,
+                            "message": 3
+                        }
+                    ],
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": ".",
+                        "endsPattern": "QEMU started"
+                    }
+                }
+            ]
+        },
+        {
+            "label": "build.sh",
+            "type": "shell",
+            "command": "./build.sh",
+            "options": {
+                "cwd": "${workspaceFolder}/${relativeFileDirname}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "PROGRAM",
+            "type": "shell",
+            "command": "./exec.sh",
+            "options": {
+                "cwd": "${workspaceFolder}/${relativeFileDirname}"
+            },
+            "group": {
+                "kind": "build"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}
